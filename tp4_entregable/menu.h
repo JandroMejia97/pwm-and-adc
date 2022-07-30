@@ -12,11 +12,7 @@
 	#include "stdint.h"
 	#include "string.h"
 	#include <avr/io.h>
-
-	#ifndef UART_H_
-	#define UART_H_
-		#include "UART.h"
-	#endif
+	#include "UART.h"
 	
 	void show_menu(void);
 	void update_menu(void);
