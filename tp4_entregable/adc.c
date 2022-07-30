@@ -1,6 +1,8 @@
 #include "acd.h"
 
-
+/**
+ * @brief Initializes the ADC
+ */
 void adc_init(void) {
   // PINC3 como entrada
   DDRC &= ~(1 << PINC3);
@@ -11,6 +13,12 @@ void adc_init(void) {
   ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);
 }
 
+/**
+ * @brief Lee el ADC y devuelve el valor leído
+ * 
+ * @param adc_channel Número del canal a leer
+ * @return uint16_t Valor leído
+ */
 uint16_t adc_read(uint8_t adc_channel) {
   // Selecciono el canal de entrada
   ADMUX = (ADMUX & 0xF0) | (adc_channel & 0x0F);

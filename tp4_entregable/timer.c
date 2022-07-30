@@ -9,6 +9,9 @@
 const uint16_t timer1_prescaler = 64;
 const uint16_t strobe_frequency = 50, strobe_duty_cycle = 20;
 
+/**
+ * @brief Inicializa el timer1
+ */
 void timer_init() {
 	// Set PB1, PB2 and PB5 to be outputs
 	DDRB |= (1 << PINB1) | (1 << PINB2) | (1 << PINB5);

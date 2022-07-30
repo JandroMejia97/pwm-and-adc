@@ -9,6 +9,9 @@
 volatile unsigned char tick_flag = 0;
 static unsigned char timer_counter = 0;
 
+/**
+ * @brief Función que planifica las tareas a ejecutar.
+ */
 void SEOS_Schedule_Tasks(void) {
 	if (++timer_counter == 20) { // Cada 1 segundo
 		tick_flag = 1;
@@ -16,7 +19,9 @@ void SEOS_Schedule_Tasks(void) {
 	}
 }
 
-
+/**
+ * @brief Función que ejecuta las tareas
+ */
 void SEOS_Dispatch_Tasks (void) {
 	if (tick_flag && must_print_flag()) {
     // Lectura del potenciómetro

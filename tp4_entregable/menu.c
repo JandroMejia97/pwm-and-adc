@@ -13,6 +13,9 @@ char hum [5];
 char temp [5];
 uint8_t must_print = 0;
 
+/**
+ * @brief Muestra el menu en el puerto serie
+ */
 void show_menu(void) {
 	UART_write_string_buffer(menu_msg_1);
 	UART_write_string_buffer(menu_msg_2);
@@ -27,6 +30,9 @@ void set_transmit_data(uint8_t valor) {
 	transmit_data = valor;
 }
 
+/**
+ * @brief Actualiza el menu en el puerto serie
+ */
 void update_menu() {
 	uint8_t input[1]="";
 	UART_get_string_from_buffer(input);
@@ -53,6 +59,10 @@ void update_menu() {
 
 }
 
+/**
+ * @brief Indica si se debe imprimir información en el puerto serie
+ * @return uint8_t 1 si se debe imprimir, 0 en caso contrario
+ */
 uint8_t must_print_flag() {
 	return must_print;
 }
