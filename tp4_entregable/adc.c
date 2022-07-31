@@ -9,8 +9,10 @@ void adc_init(void) {
   // Referencia de AVCC | Justificación de la conversión: right-adjust
   ADMUX = (1 << REFS0);
   // Prescaler de 128, para una frecuencia de 125KHz (el rendimiento es mejor hasta 200KHz)
-  // Habilito la ADC | ADC Prescaler = 128
-  ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);
+  // Habilito la ADC | Habilito la interrupción de ADC | ADC Prescaler = 128
+  ADCSRA = (1 << ADEN) | (1 << ADIE) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);
+  // Deshabilito la entrada digital en el pin ADC3
+  DIDR0 |= 1 << ADC3D;
 }
 
 /**

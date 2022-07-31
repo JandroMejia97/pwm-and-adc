@@ -28,14 +28,14 @@ void timer_init() {
 	TCCR1A |= (1 << WGM11);
 	TCCR1B |= (1 << WGM13) | (1 << WGM12);
 
-	// Prescaler 8
+	// Prescaler 64
 	TCCR1B |= (1 << CS11) | (1 << CS10);
 
 	// Set PWM frequency/top value
 	ICR1 = 4999;
 	// OCR1A = ;
-	OCR1B = 0;
-	OCR1A = 255;
+	OCR1B = ICR1 - (255 * 499L / 64);
+	OCR1A = ICR1 - (255 * 499L / 64);
 }
 
 uint8_t map(uint8_t x, uint8_t in_min, uint8_t in_max, uint8_t out_min, uint8_t out_max) {
