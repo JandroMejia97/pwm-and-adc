@@ -1,0 +1,58 @@
+#include "menu.h"
+
+static uint8_t menu_msg_1[] = "Regulador de intensidad de LED RGB\n\r";
+static uint8_t menu_msg_2[] = "Ingrese R, G o B para regular los colores ROJO, VERDE o AZUL respectivamente.\n\r";
+static uint8_t error_msg[]= "Comando no valido\n\r";
+static uint8_t info_msg[] = "Regulando el color: ";
+static uint8_t red_color[] ="ROJO\n\r";
+static uint8_t green_color[] ="VERDE\n\r";
+static uint8_t blue_color[] ="AZUL\n\r";
+
+static uint8_t transmit_data = 0;
+char hum [5];
+char temp [5];
+uint8_t must_print = 0;
+
+void show_menu(void) {
+	UART_write_string_buffer(menu_msg_1);
+	UART_write_string_buffer(menu_msg_2);
+	transmit_data = 1;
+}
+
+uint8_t get_transmit_data(void) {
+	return transmit_data;
+}
+
+void set_transmit_data(uint8_t valor) {
+	transmit_data = valor;
+}
+
+void update_menu() {
+	uint8_t input[1]="";
+	UART_get_string_from_buffer(input);
+	if (strcmp((const char*) input, (const char*) "R") == 0 || strcmp((const char*) input, (const char*) "r") == 0){
+		UART_write_string_buffer(info_msg);
+		UART_write_string_buffer(red_color);
+		transmit_data = 1;
+		must_print = 1;
+	}	else if (strcmp((const char*) input, (const char*) "G") == 0 || strcmp((const char*) input, (const char*) "g") == 0){
+		UART_write_string_buffer(info_msg);
+		UART_write_string_buffer(green_color);
+		transmit_data = 1;
+		must_print = 1;
+	}	else if (strcmp((const char*) input, (const char*) "B") == 0 || strcmp((const char*) input, (const char*) "b") == 0){
+		UART_write_string_buffer(info_msg);
+		UART_write_string_buffer(blue_color);
+		transmit_data = 1;
+		must_print = 1;
+	} else {
+		UART_write_string_buffer(error_msg);
+		transmit_data = 0;
+		must_print = 0;
+	}
+
+}
+
+uint8_t must_print_flag() {
+	return must_print;
+}
