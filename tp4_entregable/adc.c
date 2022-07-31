@@ -19,15 +19,13 @@ void adc_init(void) {
  * @param adc_channel Número del canal a leer
  * @return uint16_t Valor leído
  */
-uint16_t adc_read(uint8_t adc_channel) {
-  // Selecciono el canal de entrada
-  ADMUX = (ADMUX & 0xF0) | (adc_channel & 0x0F);
+uint8_t adc_read() {
   // Inicio la conversión
   ADCSRA |= (1 << ADSC);
   // Espero a que termine la conversión
   while (~(ADCSRA & (1 << ADIF)));
   // Limpio el flag de conversion
   ADCSRA |= (1 << ADIF);
-  // Devuelvo el resultado
-  return ADC;
+  // Devuelvo el resultado (8 bits, parte baja)
+  return ADCL;
 }

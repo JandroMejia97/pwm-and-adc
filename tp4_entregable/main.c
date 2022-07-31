@@ -9,19 +9,19 @@
 #include "main.h"
 
 int main(void) {
-	UART_init(0x33);
-	show_menu();
+	//UART_init(0x33);
+	//show_menu();
 	timer_init();
 
   while (1) {
-		SEOS_Dispatch_Tasks();
+		/* SEOS_Dispatch_Tasks();
 		if (get_received_command()) {
-			update_menu();
+			//update_menu();
 			set_received_command(0);
 		}
 		if (get_transmit_data()) {
 			UART_TX_Interrupt_Enable();
 			set_transmit_data(0);
-		}
+		} */
 	}
 }

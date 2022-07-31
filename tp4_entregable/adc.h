@@ -11,6 +11,6 @@
 	#include <avr/io.h>
 
   void adc_init(void);
-  uint16_t adc_read(uint8_t adc_channel);
+  uint8_t adc_read();
 #endif /* ADC_H_ */
 

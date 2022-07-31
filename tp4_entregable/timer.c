@@ -15,6 +15,7 @@ const uint16_t strobe_frequency = 50, strobe_duty_cycle = 20;
 void timer_init() {
 	// Set PB1, PB2 and PB5 to be outputs
 	DDRB |= (1 << PINB1) | (1 << PINB2) | (1 << PINB5);
+	PORTB = 0xFF;
 
 	// Clear Timer/Counter Control Registers
 	TCCR1A = 0;
@@ -32,5 +33,11 @@ void timer_init() {
 
 	// Set PWM frequency/top value
 	ICR1 = 4999;
-	OCR1A = ICR1 / (100 / strobe_duty_cycle);
+	// OCR1A = ;
+	OCR1B = 0;
+	OCR1A = 255;
+}
+
+uint8_t map(uint8_t x, uint8_t in_min, uint8_t in_max, uint8_t out_min, uint8_t out_max) {
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

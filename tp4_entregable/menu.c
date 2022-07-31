@@ -1,9 +1,11 @@
 #include "menu.h"
 
 static uint8_t menu_msg_1[] = "Regulador de intensidad de LED RGB\n\r";
-static uint8_t menu_msg_2[] = "Ingrese R, G o B para regular los colores ROJO, VERDE o AZUL respectivamente.\n\r";
+static uint8_t menu_msg_2[] = "Ingrese el color deseado (usando decimales 0-255) en el formato: R,G,B.\n\r";
+static uint8_t menu_msg_3[] = "Por ejemplo: Para mostrar el color rojo, ingrese: 255,0,0\n\r";
+static uint8_t menu_msg_4[] = "Nota: Use el potenciometro para regular el brillo del LED\n\r";
 static uint8_t error_msg[]= "Comando no valido\n\r";
-static uint8_t info_msg[] = "Regulando el color: ";
+static uint8_t info_msg[] = "Brillo: ";
 static uint8_t red_color[] ="ROJO\n\r";
 static uint8_t green_color[] ="VERDE\n\r";
 static uint8_t blue_color[] ="AZUL\n\r";
@@ -19,6 +21,8 @@ uint8_t must_print = 0;
 void show_menu(void) {
 	UART_write_string_buffer(menu_msg_1);
 	UART_write_string_buffer(menu_msg_2);
+	UART_write_string_buffer(menu_msg_3);
+	UART_write_string_buffer(menu_msg_4);
 	transmit_data = 1;
 }
 
