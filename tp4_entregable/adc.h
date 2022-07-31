@@ -5,12 +5,15 @@
  *  Author: Alejandro Mejía
  */ 
 
-
 #ifndef ADC_H_
 #define ADC_H_
-	#include <avr/io.h>
+  #include <avr/io.h>
+  #include <avr/interrupt.h>
 
   void adc_init(void);
-  uint8_t adc_read();
+  void adc_read(void);
+  void set_adc_read_completed(uint8_t);
+  uint8_t get_adc_read_completed(void);
+  uint8_t get_adc_value(void);
 #endif /* ADC_H_ */
 
