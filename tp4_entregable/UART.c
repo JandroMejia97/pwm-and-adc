@@ -42,7 +42,7 @@ void UART_TX_Interrupt_Enable(void) {
  * @brief Deshabilita las interrupciones de transmision
  */
 void UART_TX_Interrupt_Disable(void) {
-	UCSR0B &=~(1<<UDRIE0);
+	UCSR0B &= ~(1<<UDRIE0);
 }
 
 /**
@@ -51,7 +51,7 @@ void UART_TX_Interrupt_Disable(void) {
  * @param caracter Caracter a escribir
  */
 void UART_write_char_buffer(uint8_t caracter) {
-	if (((tx_writing_index + 1) % TX_BUFFER_LENGTH) != tx_reading_index){
+	if (((tx_writing_index + 1) % TX_BUFFER_LENGTH) != tx_reading_index) {
 		BUFFER_TX[tx_writing_index] = caracter;
 		// Incrementa el indice de escritura o lo reinicia si llega al final del buffer
 		tx_writing_index = (tx_writing_index+1) % (TX_BUFFER_LENGTH);

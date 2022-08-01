@@ -1,5 +1,12 @@
 #include "pwm.h"
 
+static volatile uint8_t flag_timer_0 = 0;
+static volatile uint8_t ocr0a_counter = 0;
+static volatile uint8_t ovf0_counter = 0;
+
+void timer0_init(void);
+void timer1_init(void);
+
 /**
  * @brief Inicializa el timer1
  */
@@ -17,11 +24,11 @@ void timer0_init() {
 	TCCR0A |= (1 << COM0A1) | (1 << COM0A0);
 	// Set fast PWM - mode 3
 	TCCR0A |= (1 << WGM01) | (1 << WGM00);
-	// 1024 prescaler, frecuencia de 62Hz
-	TCCR0B |= (1 << CS00) | (1 << CS02);
+	// 256 prescaler, frecuencia de 244Hz
+	TCCR0B |= (1 << CS02);
 
 	// Enable interrupts for timer 0
-	TIMSK0 |= (1<<OCIE0A) | (1<<TOIE0);
+	TIMSK0 |= (1 << OCIE0A) | (1 << TOIE0);
 }
 
 void timer1_init() {
@@ -50,7 +57,7 @@ void timer1_init() {
 }
 
 void set_red_color(float duty_cycle) {
-	OCR0A = get_ocr_value(duty_cycle);
+	OCR0A = duty_cycle * 256 -1;
 }
 
 void set_green_color(float duty_cycle) {
@@ -69,14 +76,21 @@ float get_ocr_value(float duty_cycle) {
  * @brief Interrupcion OVF del timer0
  */
 ISR(TIMER0_OVF_vect) {
-	// Apaga el led rojo
-	PORTB &= ~(1 << PINB5);
+	if (++ovf0_counter == 5) {
+		ovf0_counter = 0;
+		// Apaga el led rojo
+		PORTB &= ~(1 << PINB5);
+	}
 }
 
 /**
  * @brief Interrupcion COMPA del timer0
  */
 ISR(TIMER0_COMPA_vect) {
-	PORTB |= (1 << PINB5);
+	// 5 ticks = 20ms
+	if (++ocr0a_counter == 5) {
+		ocr0a_counter = 0;
+		PORTB |= (1 << PINB5);
+	}
 }
 
