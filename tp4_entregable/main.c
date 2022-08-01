@@ -9,9 +9,8 @@
 #include "main.h"
 
 int main(void) {
-	// pwm_init();
+	pwm_init();
 	adc_init();
-	timer_init();
 	sei();
 	while (1) {
 		adc_read();

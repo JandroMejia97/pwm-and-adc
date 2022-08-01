@@ -16,6 +16,6 @@
 	#include "UART.h"
 	#include "menu.h"
 	#include "seos.h"
-	#include "timer.h"
+	#include "pwm.h"
 	#include "adc.h"
 #endif
