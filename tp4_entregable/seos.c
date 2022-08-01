@@ -31,6 +31,6 @@ void SEOS_Dispatch_Tasks (void) {
 	}
 }
 
-ISR (TIMER1_COMPA_vect) {
+ISR(TIMER1_COMPA_vect) {
 	SEOS_Schedule_Tasks();
 }

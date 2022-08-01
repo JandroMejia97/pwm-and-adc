@@ -8,11 +8,9 @@
 
 #ifndef SEOS_H_
 #define SEOS_H_
-  
-  #ifndef MENU_H_
-  #define MENU_H_
-    #include "menu.h"
-  #endif
+  #include "menu.h"
+  #include <avr/io.h>
+	#include <avr/interrupt.h>
 
   void SEOS_Schedule_Tasks(void);
   void SEOS_Dispatch_Tasks (void);
