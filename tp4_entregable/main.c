@@ -1,19 +1,20 @@
 /*
- * tp4_entregable.c
+ * GccApplication2.c
  *
- * Created: 7/11/2022 2:35:52 PM
- * Author : Alejandro Mejía
+ * Created: 31/7/2022 17:36:40
+ * Author : Fran
  */ 
+
+#include <avr/io.h>
 #include "main.h"
 
 int main(void) {
-	//UART_init(0x33);
-	//show_menu();
+	pwm_init();
 	adc_init();
 	timer_init();
 	sei();
 
-  while (1) {
+	while (1) {
 		adc_read();
 		if (get_adc_read_completed()) {
 			uint8_t valor = map_to(get_adc_value(), 0, 255, 0, 255);

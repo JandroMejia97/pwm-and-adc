@@ -1,8 +1,8 @@
-﻿/*
+/*
  * main.h
  *
- * Created: 29/07/2022 03:18:41 p. m.
- *  Author: Alejandro Mejía
+ * Created: 31/7/2022 17:38:16
+ *  Author: Fran
  */ 
 
 #ifndef MAIN_H_
