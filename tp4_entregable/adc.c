@@ -38,6 +38,10 @@ uint16_t get_adc_value(void) {
   return data;
 }
 
+float get_adc_percentage_value(void) {
+  return data / 1024.0;
+}
+
 /**
  * @brief Interrupción de ADC
  */

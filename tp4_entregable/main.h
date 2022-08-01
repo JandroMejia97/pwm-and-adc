@@ -15,7 +15,6 @@
 	#include <util/delay.h>
 	#include "UART.h"
 	#include "menu.h"
-	#include "seos.h"
 	#include "pwm.h"
 	#include "adc.h"
 #endif
