@@ -14,6 +14,6 @@
   void adc_read(void);
   void set_adc_read_completed(uint8_t);
   uint8_t get_adc_read_completed(void);
-  uint8_t get_adc_value(void);
+  uint16_t get_adc_value(void);
 #endif /* ADC_H_ */
 
