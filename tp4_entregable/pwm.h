@@ -9,6 +9,7 @@
 #ifndef PWM_H_
 #define PWM_H_
 	#include <avr/io.h>
+	#include <avr/interrupt.h>
 	void pwm_init(void);
 	float get_ocr_value(float duty_cycle);
 	void set_red_color(float duty_cycle);
