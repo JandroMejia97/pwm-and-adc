@@ -9,19 +9,18 @@
 #include "main.h"
 
 int main(void) {
-	pwm_init();
+	// pwm_init();
 	adc_init();
 	timer_init();
 	sei();
-
 	while (1) {
 		adc_read();
 		if (get_adc_read_completed()) {
-			uint8_t valor = map_to(get_adc_value(), 0, 255, 0, 255);
+			uint16_t value = get_adc_value();
 			set_adc_read_completed(0);
 			//UART_send_byte(valor);
-			OCR1A = ICR1 - (255 * valor / 64);
-			OCR1B = ICR1 - (255 * valor / 64);
+			OCR1A = ((value / 1024) * (ICR1 + 1))  - 1;
+			OCR1B = ((value / 1024) * (ICR1 + 1))  - 1;
 		}
 		/* SEOS_Dispatch_Tasks();
 		if (get_received_command()) {
