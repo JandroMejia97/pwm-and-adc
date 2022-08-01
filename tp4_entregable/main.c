@@ -18,9 +18,9 @@ int main(void) {
 			float duty_cycle = get_adc_percentage_value();
 			set_adc_read_completed(0);
 			//UART_send_byte(valor);
-			set_duty_cycle(duty_cycle, 'R');
-			set_duty_cycle(duty_cycle, 'G');
-			set_duty_cycle(duty_cycle, 'B');
+			set_red_color(duty_cycle);
+			set_green_color(duty_cycle);
+			set_blue_color(duty_cycle);
 		}
 	}
 }
