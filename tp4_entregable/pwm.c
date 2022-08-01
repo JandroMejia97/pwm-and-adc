@@ -3,7 +3,7 @@
 /**
  * @brief Inicializa el timer1
  */
-void timer_init() {
+void pwm_init() {
 	// Set PB1, PB2 and PB5 to be outputs
 	DDRB |= (1 << PINB1) | (1 << PINB2) | (1 << PINB5);
 	PORTB = 0x00;
