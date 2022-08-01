@@ -18,17 +18,9 @@ int main(void) {
 			float duty_cycle = get_adc_percentage_value();
 			set_adc_read_completed(0);
 			//UART_send_byte(valor);
-			OCR1A = (duty_cycle * (ICR1 + 1))  - 1;
-			OCR1B = (duty_cycle * (ICR1 + 1))  - 1;
+			set_duty_cycle(duty_cycle, 'R');
+			set_duty_cycle(duty_cycle, 'G');
+			set_duty_cycle(duty_cycle, 'B');
 		}
-		/* SEOS_Dispatch_Tasks();
-		if (get_received_command()) {
-			//update_menu();
-			set_received_command(0);
-		}
-		if (get_transmit_data()) {
-			UART_TX_Interrupt_Enable();
-			set_transmit_data(0);
-		} */
 	}
 }

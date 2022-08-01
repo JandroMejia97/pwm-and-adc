@@ -31,3 +31,18 @@ void pwm_init() {
 	OCR1B = (ICR1 / 2) - 1;
 }
 
+void set_duty_cycle(float duty_cycle, uint8_t color) {
+	uint8_t ocr_value = (duty_cycle * (ICR1 + 1))  - 1;
+	switch (color) {
+		case 'R':
+			PORTB &= ~(1 << PINB1);
+			break;
+		case 'G':
+		  OCR1B = ocr_value;
+			break;
+		case 'B':
+			OCR1A = ocr_value;
+			break;
+	}
+}
+

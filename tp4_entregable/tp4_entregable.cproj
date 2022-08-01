@@ -144,12 +144,6 @@
     <Compile Include="pwm.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="seos.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="seos.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="UART.c">
       <SubType>compile</SubType>
     </Compile>
