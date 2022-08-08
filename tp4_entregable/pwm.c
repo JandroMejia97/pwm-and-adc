@@ -57,8 +57,8 @@ void pwm_timer1_init() {
 	TCCR1A |= (1 << WGM10);
 	TCCR1B |= (1 << WGM12);
 
-	// Prescaler 64
-	TCCR1B |= (1 << CS11) | (1 << CS10);
+	// Prescaler 1024
+	TCCR1B |= (1 << CS12) | (1 << CS10);
 
 	// Set PWM frequency/top value
 	ICR1 = 4098;
