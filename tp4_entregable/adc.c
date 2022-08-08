@@ -1,7 +1,7 @@
 #include "adc.h"
 
 static volatile uint16_t data = 0;
-uint8_t adc_read_completed = 0;
+static uint8_t adc_read_completed = 0;
 
 /**
  * @brief Initializes the ADC
@@ -26,19 +26,19 @@ void adc_read(void) {
   ADCSRA |= 1 << ADSC;
 }
 
-void set_adc_read_completed(uint8_t valor) {
+void adc_set_read_completed(uint8_t valor) {
   adc_read_completed = valor;
 }
 
-uint8_t get_adc_read_completed(void) {
+uint8_t adc_get_read_completed(void) {
   return adc_read_completed;
 }
 
-uint16_t get_adc_value(void) {
+uint16_t adc_get_value(void) {
   return data;
 }
 
-float get_adc_percentage_value(void) {
+float adc_get_percentage_value(void) {
   return data / 1024.0;
 }
 

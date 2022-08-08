@@ -8,7 +8,7 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 	#ifndef F_CPU
-	#define F_CPU 16000000UL
+		#define F_CPU 16000000UL
 	#endif
 	#include <avr/io.h>
 	#include <avr/interrupt.h>

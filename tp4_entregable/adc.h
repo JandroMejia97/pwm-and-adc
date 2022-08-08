@@ -12,9 +12,9 @@
 
   void adc_init(void);
   void adc_read(void);
-  void set_adc_read_completed(uint8_t);
-  uint8_t get_adc_read_completed(void);
-  uint16_t get_adc_value(void);
-  float get_adc_percentage_value(void);
+  void adc_set_read_completed(uint8_t);
+  uint8_t adc_get_read_completed(void);
+  uint16_t adc_get_value(void);
+  float adc_get_percentage_value(void);
 #endif /* ADC_H_ */
 
