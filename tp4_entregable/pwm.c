@@ -31,8 +31,8 @@ void pwm_init() {
 void pwm_timer0_init() {
 	// Set inverting mode channel A timer0
 	TCCR0A |= (1 << COM0A1) | (1 << COM0A0);
-	// Set fast PWM - mode 7
-	TCCR0A |= (1 << WGM02) | (1 << WGM01) | (1 << WGM00);
+	// Set fast PWM - mode 3
+	TCCR0A |= (1 << WGM01) | (1 << WGM00);
 	// 1024 prescaler, frecuencia de 61Hz
 	TCCR0B |= (1 << CS02) | (1 << CS00);
 
